@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block tittle %}Home - {{ super() }}{% endblock %}
+{% block content%}
+    <h1 id="tittle">Bem Vindo a Bagunça</h1>
+    <button onclick="location.href='/posts'">View posts</button>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block tittle %}Publicações - {{ super() }}{% endblock %}
+{% block content%}
+{% if current_user.is_authenticated %}
+<div id="publicar">
+    <form action="" method="post">
+        {{ post.csrf_token}}
+        <div>
+            <label for="">Oque deseja publicar</label> <br>
+            {{ post.content }} 
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+{% else %}
+<h2>Para publicar algo, primeiro você deve estar logado</h2>
+{% endif %}
+
+<div id="publicacoes">
+    <ul>
+        {% for post in postagens %}
+        <li> <div class="post">
+            {% set usuario = users.query.filter_by(id=post.user_id).first() %}
+            {{ usuario.name }} <br>
+            @{{ usuario.username }}
+            <p>{{ post.content }}</p></div></li>
+        {% endfor %}
+    </ul> 
+</div>
+
+{% endblock %}

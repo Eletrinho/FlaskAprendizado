@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href='{{ url_for("static", filename="favicon.ico")}}' type="image/x-icon">
+    <link rel="stylesheet" href='{{ url_for("static", filename="style.css")}}'>
+    <title>{% block tittle %}Bagunça{% endblock %}</title>
+</head>
+<body>
+    <header id="header">
+        <h2 id="titulo">Bagunça</h2>
+        <nav id="nav">
+            <button onclick="location.href='/'">Home</button>
+            {% if current_user.is_authenticated %}
+                <button onclick="location.href='/logout'">Logout</button>
+            {% else %}
+                <button onclick="location.href='/login'">Login</button>
+                <button onclick="location.href='/register'">Register</button>
+            {% endif%}
+        </nav>
+    </header>
+    <div class="separator"></div>
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

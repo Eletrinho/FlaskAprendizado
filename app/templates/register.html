@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+    <div class="separator"></div>
+    {% block content %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="alerta">
+                <ul id="flashes">
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+    <div id="registrar">
+        <form action="" method="POST" id="regis">
+            {{ form.csrf_token}}
+            <div>
+                <label for="">Username :</label>
+                {{form.username}} 
+            </div>
+            <div>
+                <label for="">Email :</label>
+                {{form.email}}
+            </div>
+            <div>
+                <label for="">Nome :</label>
+                {{form.name}}
+            </div>
+            
+            <div>
+                <label for="">Senha :</label>
+                {{form.password}}
+            </div>
+            
+            <button class="hbuttons" type="submit">Registrar</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

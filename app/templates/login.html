@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block tittle %}Login - {{ super() }}{% endblock %}
+{% block content%}
+<div id="main">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="alerta">
+                <ul class="alerta">
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+    <div id="container">
+        <form action="" method="POST">
+            {{ form.csrf_token}}
+            <div id="username">
+                <label for="">Username :</label>
+                {{form.username}} 
+            </div>
+            
+            <div id="senha">
+                <label for="">Senha :</label>
+                {{form.password}}
+            </div>
+            
+            <div><label>
+                {{form.remember_me}} Continuar logado
+            </label></div>
+            
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
