@@ -60,4 +60,5 @@ def posts():
 
         return redirect(url_for("posts"))
     postagens = Post.query.all()
+    postagens.reverse()
     return render_template("posts.html", post=post, postagens=postagens, users=User)
