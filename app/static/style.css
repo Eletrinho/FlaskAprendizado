@@ -88,3 +88,7 @@ button{
     border-color: #000;
     border-style: solid;
 }
+
+#userpage {
+    display: flex;
+}

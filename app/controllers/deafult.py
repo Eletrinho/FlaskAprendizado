@@ -62,3 +62,11 @@ def posts():
     postagens = Post.query.all()
     postagens.reverse()
     return render_template("posts.html", post=post, postagens=postagens, users=User)
+
+@app.route('/user/<usuario>')
+def user_page(usuario):
+    verificacao = User.query.filter_by(username=usuario).first()
+    if verificacao:
+        return render_template('user.html', usuario=verificacao)
+    else:
+        return render_template('usererror.html')
