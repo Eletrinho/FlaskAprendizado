@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap%27');
 *{
-    font-family: cursive;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     --cinza: #333138;
     --cinza-claro: #515052;
@@ -12,6 +13,9 @@
     display: flex;
     align-items: center;
     color: var(--branco);
+}
+#principal {
+    text-align: center;
 }
 
 #header{
@@ -45,9 +49,8 @@
     border-radius: 10px;
     color: #FFFFFA;
     padding: 5rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-top: 5rem;
+    margin: 5rem 10rem auto 10rem;
+
 }
 button{
     background: linear-gradient(to right,#FF312E ,#333138);
@@ -73,16 +76,16 @@ button{
     transform: scale(0.95);
 }
 
-#registrar{
-    text-align: center;
-    padding: 3rem;
 
-}
 #regis {
     color: #FFFFFA;
     background-color: #333138;
-    padding: 3rem;
+    text-align: center;
     border-radius: 10px;
+    padding: 5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 5rem;
 }
 .post {
     border-color: #000;
@@ -91,4 +94,10 @@ button{
 
 #userpage {
     display: flex;
+}
+div#infos{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-left: 10rem;
 }

@@ -64,7 +64,8 @@ def posts():
     return render_template("posts.html", post=post, postagens=postagens, users=User)
 
 @app.route('/user/<usuario>')
-def user_page(usuario):
+@app.route('/user/')
+def user_page(usuario=None):
     verificacao = User.query.filter_by(username=usuario).first()
     if verificacao:
         return render_template('user.html', usuario=verificacao)

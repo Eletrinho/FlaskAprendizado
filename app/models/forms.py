@@ -15,6 +15,3 @@ class RegisterForm(FlaskForm):
 
 class PostForm(FlaskForm):
     content = TextAreaField("content", validators=[DataRequired(), Length(min=3, max=200)])
-
-class SearchForm(FlaskForm):
-    pesquisar = StringField("pesquisa", validators=[DataRequired()])

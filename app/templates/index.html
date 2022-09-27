@@ -2,15 +2,12 @@
 
 {% block tittle %}Home - {{ super() }}{% endblock %}
 {% block content%}
-    <h1 id="tittle">Bem Vindo a Bagunça</h1>
-    <button onclick="location.href='/posts'">View posts</button>
-    <form action="">
-
-    </form>
-    <div>
-        <label for="">Digite um usuário para pesquisar</label>
-        <input type="text" name="" id="pesquisar">
-        <button onclick="redirecionar()">pesquisar</button>
+    <div id="principal">
+        <h1 id="tittle">Bem Vindo a Bagunça</h1>
+        <button onclick="location.href='/posts'">View posts</button> <br>
     </div>
+    <label for="">Digite um usuário para pesquisar</label>
+    <input type="text" name="" id="pesquisar"> <br>
+    <button onclick="redirecionar()">Pesquisar</button>
     <script src='{{ url_for("static", filename="script.js")}}'></script>
 {% endblock %}
