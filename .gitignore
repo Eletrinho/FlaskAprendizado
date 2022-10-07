@@ -3,5 +3,5 @@ venv/
 
 *.pyc
 __pycache__/
-models/__pycache__/
-controllers/__pycache__/
+app/models/__pycache__/
+app/controllers/__pycache__/
