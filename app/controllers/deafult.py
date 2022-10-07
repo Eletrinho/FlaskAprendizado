@@ -61,7 +61,6 @@ def posts():
         return redirect(url_for("posts"))
     postagens = Post.query.all()
     postagens.reverse()
-    print(postagens)
     return render_template("posts.html", postForm=postForm, postagens=postagens, users=User)
 
 @app.route('/user/<usuario>')
@@ -80,9 +79,3 @@ def deleteaccount():
     db.session.commit()
     flash("Sua conta foi apagada com sucesso")
     return redirect(url_for("index"))
-
-@app.route('/teste')
-def testes():
-    postagem = Post.query.filter_by(id=1).all()
-    print(postagem)
-    return "<h1> Ok! </h1>"
