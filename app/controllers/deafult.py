@@ -52,16 +52,17 @@ def register():
 
 @app.route('/posts', methods=['GET', 'POST'])
 def posts():
-    post = PostForm()
-    if post.validate_on_submit():
-        postar = Post(post.content.data, current_user.id)
+    postForm = PostForm()
+    if postForm.validate_on_submit():
+        postar = Post(postForm.content.data, current_user.id)
         db.session.add(postar)
         db.session.commit()
 
         return redirect(url_for("posts"))
     postagens = Post.query.all()
     postagens.reverse()
-    return render_template("posts.html", post=post, postagens=postagens, users=User)
+    print(postagens)
+    return render_template("posts.html", postForm=postForm, postagens=postagens, users=User)
 
 @app.route('/user/<usuario>')
 @app.route('/user/')
@@ -71,3 +72,17 @@ def user_page(usuario=None):
         return render_template('user.html', usuario=verificacao)
     else:
         return render_template('usererror.html')
+
+@app.route('/delete')
+def deleteaccount():
+    usuario = User.query.filter_by(username=current_user.username).first()
+    db.session.delete(usuario)
+    db.session.commit()
+    flash("Sua conta foi apagada com sucesso")
+    return redirect(url_for("index"))
+
+@app.route('/teste')
+def testes():
+    postagem = Post.query.filter_by(id=1).all()
+    print(postagem)
+    return "<h1> Ok! </h1>"

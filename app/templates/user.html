@@ -6,6 +6,8 @@
         <img src='{{ url_for("static", filename="profile.png")}}' alt="">
         <div id="infos"><h2>{{ usuario.name }}</h2>
         <h3>@{{ usuario.username }}</h3></div>
-        
+        {% if current_user.username == usuario.username %}
+            <button onclick="location.href='/delete'">Apagar conta</button>
+        {% endif %}
     </div>
 {% endblock %}

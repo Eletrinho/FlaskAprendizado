@@ -2,12 +2,24 @@
 
 {% block tittle %}Home - {{ super() }}{% endblock %}
 {% block content%}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="alerta">
+                <ul id="flashes">
+                    {% for message in messages %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+
     <div id="principal">
         <h1 id="tittle">Bem Vindo a Bagunça</h1>
         <button onclick="location.href='/posts'">View posts</button> <br>
+        <label for="">Digite o @ do usuário para pesquisar</label>
+        <input type="text" name="" id="pesquisar"> <br>
+        <button onclick="redirecionar()">Pesquisar</button>
     </div>
-    <label for="">Digite um usuário para pesquisar</label>
-    <input type="text" name="" id="pesquisar"> <br>
-    <button onclick="redirecionar()">Pesquisar</button>
     <script src='{{ url_for("static", filename="script.js")}}'></script>
 {% endblock %}

@@ -8,6 +8,9 @@
     --preto: #000103;
     --vermelho: #FF312E;
 }
+html{
+    height: 100%;
+}
 
 #titulo{
     display: flex;
@@ -90,6 +93,7 @@ button{
 .post {
     border-color: #000;
     border-style: solid;
+    margin-top: 5px;
 }
 
 #userpage {
@@ -100,4 +104,21 @@ div#infos{
     flex-direction: column;
     align-self: center;
     margin-left: 10rem;
+}
+
+@media (max-width: 630px){
+    #container{
+        margin: 1rem 1rem auto 1rem
+    }
+}
+
+@media (max-width: 550px){
+    #header{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    nav{
+        margin: 9px;
+    }
 }

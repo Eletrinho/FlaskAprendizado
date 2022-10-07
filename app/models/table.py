@@ -48,7 +48,7 @@ class Post(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return f"<Post {self.id}> "
+        return f"<Post {self.id}: {self.content}> "
 
 class Follow(db.Model):
     __tablename__ = 'follow'

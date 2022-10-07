@@ -5,10 +5,10 @@
 {% if current_user.is_authenticated %}
 <div id="publicar">
     <form action="" method="post">
-        {{ post.csrf_token}}
+        {{ postForm.csrf_token}}
         <div>
             <label for="">Oque deseja publicar</label> <br>
-            {{ post.content }} 
+            {{ postForm.content }} 
         </div>
         <button type="submit">Enviar</button>
     </form>
@@ -23,8 +23,12 @@
         {% for post in postagens %}
         <li> <div class="post">
             {% set usuario = users.query.filter_by(id=post.user_id).first() %}
-            {{ usuario.name }} <br>
-            @{{ usuario.username }}
+            {% if usuario %}
+                {{ usuario.name }} <br>
+                @{{ usuario.username }} <br> <br>
+            {% else %}
+                Conta deletada <br> <br>
+            {% endif %}
             <p>{{ post.content }}</p></div></li>
         {% endfor %}
     </ul> 
