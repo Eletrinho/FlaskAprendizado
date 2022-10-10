@@ -24,12 +24,13 @@
         <li> <div class="post">
             {% set usuario = users.query.filter_by(id=post.user_id).first() %}
             {% if usuario %}
-                {{ usuario.name }} <br>
-                @{{ usuario.username }} <br> <br>
+                <p>{{ usuario.name }}</p>
+                <p>@{{ usuario.username }} </p>
+                <p>{{post.date_posted }}</p> <br>
             {% else %}
                 Conta deletada <br> <br>
-            {% endif %}
-            <p>{{ post.content }}</p></div></li>
+                {% endif %}
+                <p>{{ post.content }} </p></div></li>
         {% endfor %}
     </ul> 
 </div>

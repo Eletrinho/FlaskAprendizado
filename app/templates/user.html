@@ -1,13 +1,28 @@
 {% extends 'base.html' %}
-{% block tittle %}{{ usuario.name }} - {{ super() }}{% endblock %}
+{% block tittle %}{{ verificar.name }} - {{ super() }}{% endblock %}
 
 {% block content %}
     <div id="userpage">
         <img src='{{ url_for("static", filename="profile.png")}}' alt="">
-        <div id="infos"><h2>{{ usuario.name }}</h2>
-        <h3>@{{ usuario.username }}</h3></div>
-        {% if current_user.username == usuario.username %}
-            <button onclick="location.href='/delete'">Apagar conta</button>
+        <div id="infos"><h2>{{ verificar.name }}</h2>
+        <h3>@{{ verificar.username }}</h3></div>
+        {% if current_user.username == verificar.username %}
+            <button onclick="location.href='/delete'" style="place-self: self-end;">Apagar conta</button>
         {% endif %}
+    </div>
+    <div id="publicacoes">
+        <ul>
+            {% for post in postagens %}
+            <li> <div class="post">
+                {% set usuario = users.query.filter_by(id=post.user_id).first() %}
+                {% if usuario %}
+                    <p>{{ usuario.name }}</p>
+                    <p>@{{ usuario.username }} </p> <br>
+                {% else %}
+                    Conta deletada <br> <br>
+                {% endif %}
+                <p>{{ post.content }}</p></div></li>
+            {% endfor %}
+        </ul> 
     </div>
 {% endblock %}

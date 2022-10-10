@@ -17,6 +17,11 @@ html{
     align-items: center;
     color: var(--branco);
 }
+
+#titulo:hover{
+    cursor:pointer;
+}
+
 #principal {
     text-align: center;
 }
@@ -74,6 +79,7 @@ button{
    button:hover{
     background: linear-gradient(to right,#FF312E ,#333138);
     background-color: #FF312E;
+    cursor: pointer;
    }
    button:active{
     transform: scale(0.95);
@@ -98,6 +104,7 @@ button{
 
 #userpage {
     display: flex;
+    align-items: center;
 }
 div#infos{
     display: flex;

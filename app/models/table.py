@@ -1,4 +1,5 @@
 from app import db
+from datetime import datetime
 
 class User(db.Model):
     __tablename__ = "users"
@@ -40,12 +41,14 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship('User', foreign_keys=user_id)
     
     def __init__(self, content, user_id):
         self.content = content 
         self.user_id = user_id
+        
 
     def __repr__(self):
         return f"<Post {self.id}: {self.content}> "

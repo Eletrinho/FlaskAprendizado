@@ -68,7 +68,11 @@ def posts():
 def user_page(usuario=None):
     verificacao = User.query.filter_by(username=usuario).first()
     if verificacao:
-        return render_template('user.html', usuario=verificacao)
+        postagens = Post.query.filter_by(user_id=verificacao.id).all()
+        postagens.reverse()
+
+        # fazer o trem de follow
+        return render_template('user.html', verificar=verificacao, postagens=postagens, users=User)
     else:
         return render_template('usererror.html')
 
