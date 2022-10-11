@@ -117,6 +117,10 @@ div#infos{
     #container{
         margin: 1rem 1rem auto 1rem
     }
+    #regis{
+        padding: 0px;
+        margin: 0px;
+    }
 }
 
 @media (max-width: 550px){
