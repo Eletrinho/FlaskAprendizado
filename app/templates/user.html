@@ -8,6 +8,14 @@
         <h3>@{{ verificar.username }}</h3></div>
         {% if current_user.username == verificar.username %}
             <button onclick="location.href='/delete'" style="place-self: self-end;">Apagar conta</button>
+        {% elif not followed %}
+        <form action="" method="POST"> 
+            {{follow.csrf_token}}
+            {{follow.follow}}
+        </form>
+        {% elif followed %}
+        <p>Você segue essa pessoa</p>
+        
         {% endif %}
     </div>
     <div id="publicacoes">

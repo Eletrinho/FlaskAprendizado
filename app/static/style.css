@@ -60,7 +60,7 @@ html{
     margin: 5rem 10rem auto 10rem;
 
 }
-button{
+button, #followBtn{
     background: linear-gradient(to right,#FF312E ,#333138);
     background-color: #FF312E;
     color: #fff;
@@ -76,12 +76,12 @@ button{
     justify-content: center;
     align-items: center;
    }
-   button:hover{
+   button:hover, #followBtn:hover{
     background: linear-gradient(to right,#FF312E ,#333138);
     background-color: #FF312E;
     cursor: pointer;
    }
-   button:active{
+   button:active, #followBtn:active{
     transform: scale(0.95);
 }
 

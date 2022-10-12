@@ -1,7 +1,7 @@
 from app import app, login_manager, db
 from flask import render_template, flash, redirect, url_for
-from app.models.forms import LoginForm, RegisterForm, PostForm
-from app.models.table import User, Post
+from app.models.forms import LoginForm, RegisterForm, PostForm, FollowBtn
+from app.models.table import Follow, User, Post
 from flask_login import login_user, logout_user, current_user
 
 @login_manager.user_loader
@@ -63,7 +63,7 @@ def posts():
     postagens.reverse()
     return render_template("posts.html", postForm=postForm, postagens=postagens, users=User)
 
-@app.route('/user/<usuario>')
+@app.route('/user/<usuario>', methods=['GET', 'POST'])
 @app.route('/user/')
 def user_page(usuario=None):
     verificacao = User.query.filter_by(username=usuario).first()
@@ -71,8 +71,17 @@ def user_page(usuario=None):
         postagens = Post.query.filter_by(user_id=verificacao.id).all()
         postagens.reverse()
 
-        # fazer o trem de follow
-        return render_template('user.html', verificar=verificacao, postagens=postagens, users=User)
+        follow = FollowBtn()
+        followers = Follow.query.filter_by(user_id=verificacao.id).all()
+        followed = Follow.query.filter_by(user_id=verificacao.id, follower_id=current_user.id).first()
+
+        if follow.validate_on_submit():
+            followDb = Follow(verificacao.id, current_user.id)
+            db.session.add(followDb)
+            db.session.commit()
+            return redirect(f"{usuario}")
+        # fazer botão de unfollow
+        return render_template('user.html', verificar=verificacao, postagens=postagens, users=User, follow=follow, followed=followed)
     else:
         return render_template('usererror.html')
 
